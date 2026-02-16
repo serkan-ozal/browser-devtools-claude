@@ -1,0 +1,13 @@
+{
+  "name": "browser-devtools-mcp",
+  "version": "0.2.3",
+  "description": "Multi-platform DevTools MCP: Playwright browser automation and non-blocking Node.js backend debugging for Claude Code",
+  "author": {
+    "name": "Serkan Ozal",
+    "email": "serkanozal86@gmail.com",
+    "url": "https://github.com/serkan-ozal"
+  },
+  "homepage": "https://github.com/serkan-ozal/browser-devtools-claude",
+  "repository": "https://github.com/serkan-ozal/browser-devtools-claude",
+  "license": "Elastic-2.0"
+}

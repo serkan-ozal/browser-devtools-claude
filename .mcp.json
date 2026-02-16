@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "browser-devtools": {
+      "command": "npx",
+      "args": ["-y", "browser-devtools-mcp@latest"],
+      "env": {
+        "PLATFORM": "browser",
+        "BROWSER_HEADLESS_ENABLE": "true"
+      }
+    }
+  }
+}

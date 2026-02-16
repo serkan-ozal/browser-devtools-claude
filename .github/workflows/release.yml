@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_scale:
+        type: choice
+        description: "Version scale"
+        required: true
+        default: "patch"
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+      - name: Configure Git User
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Bump version
+        id: bump
+        run: |
+          chmod +x scripts/sync-versions.sh
+          ./scripts/sync-versions.sh ${{ github.event.inputs.version_scale }}
+          NEW_VERSION=$(jq -r '.version' .claude-plugin/plugin.json)
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$NEW_VERSION" >> $GITHUB_OUTPUT
+      - name: Commit and push
+        run: |
+          git add .claude-plugin/plugin.json .claude-plugin/marketplace.json
+          if git diff --staged --quiet; then
+            echo "::error::No version changes to commit"
+            exit 1
+          fi
+          git commit -m "chore: release ${{ steps.bump.outputs.version }}"
+          git push
+      - name: Create tag
+        id: tag
+        run: |
+          git tag -a "${{ steps.bump.outputs.tag }}" -m "Release ${{ steps.bump.outputs.version }}"
+          git push origin "${{ steps.bump.outputs.tag }}"
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.tag }}
+          name: Release ${{ steps.bump.outputs.version }}
+          generate_release_notes: true

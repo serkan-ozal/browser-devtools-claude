@@ -1,0 +1,50 @@
+{
+  "name": "browser-devtools",
+  "owner": {
+    "name": "Serkan Ozal",
+    "email": "serkanozal86@gmail.com"
+  },
+  "metadata": {
+    "description": "Multi-platform DevTools MCP: Playwright browser automation and non-blocking Node.js backend debugging for Claude Code",
+    "version": "0.2.3"
+  },
+  "plugins": [
+    {
+      "name": "browser-devtools-mcp",
+      "source": ".",
+      "description": "Playwright browser automation, Node.js backend debugging, and testing tools",
+      "version": "0.2.3",
+      "author": {
+        "name": "Serkan Ozal"
+      },
+      "tags": [
+        "browser",
+        "automation",
+        "testing",
+        "devtools",
+        "playwright",
+        "mcp",
+        "accessibility",
+        "screenshot",
+        "opentelemetry",
+        "observability",
+        "tracing",
+        "distributed-tracing",
+        "web-vitals",
+        "performance",
+        "debugging",
+        "scraping",
+        "react",
+        "network",
+        "console",
+        "figma",
+        "design-qa",
+        "node",
+        "nodejs",
+        "backend",
+        "tracepoint",
+        "logpoint"
+      ]
+    }
+  ]
+}
