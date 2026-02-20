@@ -5,32 +5,21 @@ Hover over an element on the page.
 ## Usage
 
 ```
-/hover <selector>
+/hover <selector|ref>
 ```
 
 ## Description
 
-Hovers the mouse over an element, triggering hover states and tooltip displays.
-
-## Arguments
-
-- `selector` (required): CSS selector of element to hover
+Hovers the mouse over an element. Use CSS selector or ref (e.g. `e1` from ARIA snapshot).
 
 ## Examples
 
 ```
+/hover e1
 /hover .dropdown-trigger
 /hover button.menu
-/hover [data-tooltip]
-/hover .nav-item
 ```
-
-## Notes
-
-- Useful for testing hover states and dropdowns
-- Triggers mouseenter, mouseover events
-- Element must be visible
 
 ## MCP Tools Used
 
-- `interaction_hover` - Hover element
+- `interaction_hover` - Accepts selector or ref (e1, @e1)

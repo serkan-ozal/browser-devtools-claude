@@ -5,33 +5,32 @@ Click an element on the page.
 ## Usage
 
 ```
-/click <selector>
+/click <selector|ref>
 ```
 
 ## Description
 
-Clicks an element on the page identified by CSS selector. Supports buttons, links, and any clickable elements.
+Clicks an element identified by CSS selector **or ref** from the last ARIA snapshot (e.g. `e1`, `@e1`).
 
 ## Arguments
 
-- `selector` (required): CSS selector of element to click
+- `selector` or `ref`: CSS selector (e.g. `#submit`) or ref from `a11y_take-aria-snapshot` (e.g. `e1`)
 
 ## Examples
 
 ```
+/click e1
 /click button[type="submit"]
-/click .login-button
 /click #checkout
-/click a[href="/products"]
 /click [data-testid="add-to-cart"]
 ```
 
 ## Notes
 
+- Refs come from `a11y_take-aria-snapshot`; valid until next snapshot or navigation
 - Waits for element to be visible and clickable
 - Scrolls element into view if needed
-- Triggers all associated event handlers
 
 ## MCP Tools Used
 
-- `interaction_click` - Click element
+- `interaction_click` - Accepts selector or ref (e1, @e1)

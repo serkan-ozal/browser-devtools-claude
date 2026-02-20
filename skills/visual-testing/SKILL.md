@@ -14,10 +14,11 @@ This skill activates when:
 ## Capabilities
 
 ### Screenshot Capture
-- Full page screenshots (`content_take-screenshot`)
-- Element-specific screenshots
-- Viewport-controlled captures
+- Full page or element screenshots (`content_take-screenshot`) — `selector` or `ref` for element
+- **Annotated screenshots** — `annotate: true` overlays numbered labels [1],[2],… mapping to ARIA refs (e1,e2). Use `annotateContent` for headings, `cursorInteractive` for div/span buttons
 - PDF generation (`content_save-as-pdf`)
+
+**Important**: Do not use screenshot to understand page structure. Call `a11y_take-aria-snapshot` first, then screenshot for visual verification.
 
 ### Responsive Testing
 - Resize viewport (`interaction_resize-viewport`)
@@ -48,12 +49,13 @@ This skill activates when:
 ## Testing Workflow
 
 1. **Navigate**: Go to page under test
-2. **Wait**: Ensure page fully loaded
-3. **Capture**: Take baseline screenshot
-4. **Resize**: Test different viewports
-5. **Interact**: Test hover states, modals
-6. **Compare**: Check against expected design
-7. **Document**: Report visual issues
+2. **Wait**: Network idle, page fully loaded
+3. **ARIA snapshot first**: Get refs (e1, e2, …) before screenshot
+4. **Capture**: Take baseline or annotated screenshot
+5. **Resize**: Test different viewports
+6. **Interact**: Use refs (e1) for clicks; test hover, modals
+7. **Compare**: Check against expected design
+8. **Document**: Report visual issues
 
 ## Common Checks
 

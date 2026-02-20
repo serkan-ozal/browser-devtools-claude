@@ -43,20 +43,21 @@ This skill activates when:
 For Node.js backend debugging, use `PLATFORM=node` and see the node-debugging skill. Node platform adds `run_js-in-node` and `debug_get-logs`; Dompoints/Netpoints are browser-only.
 
 ### Error Investigation
-- Capture screenshots at error state (`content_take-screenshot`)
-- Get HTML snapshot for context (`content_get-as-html`)
-- Check for missing resources or 404s
+- ARIA snapshot first (`a11y_take-aria-snapshot`) for page structure; then screenshot for visual verification
+- Annotated screenshot (`content_take-screenshot` with `annotate: true`) when you need labeled elements
+- HTML snapshot, check for 404s
 
 ## Debugging Workflow
 
 1. **Reproduce**: Navigate to the problematic page
-2. **Capture**: Take screenshot of current state
-3. **Inspect Console**: Check for JavaScript errors
-4. **Analyze Network**: Look for failed requests
-5. **Set Probes**: Add tracepoints/logpoints if needed for deeper investigation
-6. **Investigate**: Run diagnostic JavaScript or trigger probes
-7. **Collect Snapshots**: Get captured debug snapshots
-8. **Document**: Summarize findings with evidence
+2. **ARIA snapshot**: Get page structure and refs
+3. **Capture**: Screenshot (annotated if needed for element identification)
+4. **Inspect Console**: Check for JavaScript errors
+5. **Analyze Network**: Look for failed requests
+6. **Set Probes**: Add tracepoints/logpoints if needed for deeper investigation
+7. **Investigate**: Run diagnostic JavaScript or trigger probes
+8. **Collect Snapshots**: Get captured debug snapshots
+9. **Document**: Summarize findings with evidence
 
 ## Best Practices
 
