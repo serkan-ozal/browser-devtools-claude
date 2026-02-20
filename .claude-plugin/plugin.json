@@ -1,6 +1,6 @@
 {
   "name": "browser-devtools-mcp",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Multi-platform DevTools MCP: Playwright browser automation and non-blocking Node.js backend debugging for Claude Code",
   "author": {
     "name": "Serkan Ozal",
