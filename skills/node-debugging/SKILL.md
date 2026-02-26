@@ -1,3 +1,8 @@
+---
+name: node-debugging
+description: Debug Node.js backend processes using non-blocking tracepoints, logpoints, exceptionpoints, and JavaScript execution. Use when debugging API servers, workers, or backend scripts.
+---
+
 # Node.js Backend Debugging Skill
 
 Debug Node.js backend processes using non-blocking tracepoints, logpoints, exceptionpoints, and JavaScript execution. Use when the user needs to debug API servers, workers, or backend scripts.
@@ -33,10 +38,8 @@ For Docker: use `host.docker.internal` or container name when MCP runs in a cont
 - **Watch expressions** (`debug_add-watch`): Evaluate at every tracepoint hit
 
 ### Snapshot Retrieval
-- `debug_get-tracepoint-snapshots`
-- `debug_get-logpoint-snapshots`
-- `debug_get-exceptionpoint-snapshots`
-- Clear snapshots when done to free memory
+- `debug_get-probe-snapshots` (types: tracepoint, logpoint, exceptionpoint; returns tracepointSnapshots, logpointSnapshots, exceptionpointSnapshots)
+- `debug_clear-probe-snapshots` — clear when done to free memory
 
 ### Console & Source Maps
 - **Console logs** (`debug_get-logs`): Captures console.log, error, warn from the Node process
@@ -50,14 +53,14 @@ For Docker: use `host.docker.internal` or container name when MCP runs in a cont
 1. **Connect**: `debug_connect` with pid, processName, or containerName
 2. **Set probes**: Tracepoints on route handlers, exceptionpoints for errors
 3. **Trigger**: Make API requests or trigger the code path
-4. **Collect**: `debug_get-tracepoint-snapshots` or `debug_get-exceptionpoint-snapshots`
+4. **Collect**: `debug_get-probe-snapshots` (types: tracepoint, exceptionpoint)
 5. **Investigate**: Use `run_js-in-node` for dynamic inspection
-6. **Cleanup**: `debug_clear-tracepoints`, `debug_disconnect`
+6. **Cleanup**: `debug_clear-probes`, `debug_disconnect`
 
 ## Best Practices
 
 - Use `urlPattern` matching script paths (e.g. `routes/api.ts`, `server.js`)
 - Start with exceptionpoints to catch errors first
 - Use logpoints for lightweight monitoring
-- Poll snapshots with `fromSequence` for efficiency
+- Poll snapshots with `fromSequence` for incremental retrieval
 - Clear probes when done to avoid overhead

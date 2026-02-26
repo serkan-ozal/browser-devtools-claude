@@ -7,6 +7,13 @@
         "PLATFORM": "browser",
         "BROWSER_HEADLESS_ENABLE": "true"
       }
+    },
+    "node-devtools": {
+      "command": "npx",
+      "args": ["-y", "browser-devtools-mcp@latest"],
+      "env": {
+        "PLATFORM": "node"
+      }
     }
   }
 }

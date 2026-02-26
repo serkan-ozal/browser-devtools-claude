@@ -1,3 +1,8 @@
+---
+name: browser-testing
+description: Automated browser testing and debugging using Browser DevTools MCP. Use when testing web pages, debugging frontend issues, verifying UI behavior, or automating browser interactions.
+---
+
 # Browser Testing Skill
 
 Automated browser testing and debugging skill using Browser DevTools MCP.

@@ -9,5 +9,6 @@
   },
   "homepage": "https://github.com/serkan-ozal/browser-devtools-claude",
   "repository": "https://github.com/serkan-ozal/browser-devtools-claude",
-  "license": "Elastic-2.0"
+  "license": "Elastic-2.0",
+  "commands": ["./commands/browser", "./commands/node"]
 }

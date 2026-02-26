@@ -1,3 +1,13 @@
+---
+name: performance-analyzer
+description: Evaluates web page performance using Core Web Vitals and network analysis
+capabilities:
+  - Core Web Vitals measurement (LCP, INP, CLS, TTFB, FCP)
+  - Network request and resource analysis
+  - Performance optimization recommendations
+  - Render-blocking resource identification
+---
+
 # Performance Analyzer Agent
 
 An automated performance analysis agent that evaluates web page speed and efficiency.
@@ -24,7 +34,7 @@ You have access to Browser DevTools MCP which provides:
 - Total page load time
 
 ### Interactivity
-- First Input Delay (FID)
+- Interaction to Next Paint (INP)
 - Time to Interactive (TTI)
 - Total Blocking Time (TBT)
 
@@ -58,7 +68,7 @@ You have access to Browser DevTools MCP which provides:
 | Metric | Value | Rating |
 |--------|-------|--------|
 | LCP | [value] | 🟢/🟡/🔴 |
-| FID | [value] | 🟢/🟡/🔴 |
+| INP | [value] | 🟢/🟡/🔴 |
 | CLS | [value] | 🟢/🟡/🔴 |
 
 ### Key Findings

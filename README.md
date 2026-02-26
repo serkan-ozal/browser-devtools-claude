@@ -29,29 +29,29 @@ Example — add to `~/.claude/settings.json` (see [CONFIG.md](./CONFIG.md) for m
         "PLATFORM": "browser",
         "BROWSER_HEADLESS_ENABLE": "true"
       }
+    },
+    "node-devtools": {
+      "command": "npx",
+      "args": ["-y", "browser-devtools-mcp@latest"],
+      "env": {
+        "PLATFORM": "node"
+      }
     }
   }
 }
 ```
 
-This gives you the MCP tools without the plugin’s skills, commands, or agents. See [CONFIG.md](./CONFIG.md) for all environment variables.
+The plugin includes both **browser** and **node** MCP servers by default. This manual setup gives you the MCP tools without the plugin's skills, commands, or agents. See [CONFIG.md](./CONFIG.md) for all environment variables.
 
 ## Usage
 
 ### Slash commands
 
-Some common commands (see `commands/` for the full list):
+Commands are split by platform. See [docs/commands/](./docs/commands/).
 
-| Command | Description |
-|---------|-------------|
-| `/browse <url>` | Navigate to a URL and interact with the page |
-| `/screenshot` | Capture page or element screenshot |
-| `/click`, `/fill`, `/hover` | Interact with elements |
-| `/accessibility` | Run accessibility snapshot (ARIA/AX tree) |
-| `/console`, `/network` | Inspect logs and HTTP requests |
-| `/webvitals` | Get Core Web Vitals metrics |
-| `/figma` | Compare page with Figma design |
-| `/run-js` | Execute JavaScript in the page |
+**Browser** (`PLATFORM=browser`): `/browse`, `/screenshot`, `/click`, `/fill`, `/hover`, `/accessibility`, `/console`, `/network`, `/webvitals`, `/figma`, `/run-js`, and more — see [commands/browser/](./commands/browser/).
+
+**Node** (`PLATFORM=node`): `/connect`, `/disconnect`, `/tracepoint`, `/logpoint`, `/snapshots`, `/run-js-node`, and more — see [commands/node/](./commands/node/).
 
 ### Agents
 
@@ -76,12 +76,16 @@ The plugin activates skills when you mention:
 
 ### Platform mode
 
-- **browser** (default) — Web automation via Playwright
-- **node** — Attach to Node.js processes for debugging (`PLATFORM=node`)
+The plugin registers two MCP servers by default:
+
+- **browser-devtools** — Web automation via Playwright (`PLATFORM=browser`)
+- **node-devtools** — Attach to Node.js processes for non-blocking debugging (`PLATFORM=node`)
+
+Both are active at once; use browser commands for web pages and node commands for backend debugging.
 
 ## Contents
 
 - **Skills**: web-debugging, node-debugging, browser-testing, observability, performance-audit, visual-testing
-- **Commands**: Slash commands for browse, screenshot, click, fill, and more
+- **Commands**: [Browser](commands/browser/) (browse, screenshot, click, …) | [Node](commands/node/) (connect, tracepoint, logpoint, …)
 - **Agents**: accessibility-auditor, design-qa, performance-analyzer, qa-tester, scraper
 - **Config**: [CONFIG.md](./CONFIG.md) — Environment variables and platform selection

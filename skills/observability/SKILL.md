@@ -1,3 +1,8 @@
+---
+name: observability
+description: Monitor and debug web applications using OpenTelemetry, console logs, network requests, and distributed tracing. Use when correlating frontend and backend requests or debugging request flow across services.
+---
+
 # Observability Skill
 
 Monitor and debug web applications using OpenTelemetry, console logs, network requests, and distributed tracing.

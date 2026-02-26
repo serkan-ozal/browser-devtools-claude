@@ -1,3 +1,8 @@
+---
+name: performance-audit
+description: Analyze web page performance using Web Vitals and network timing metrics. Use when optimizing load times, checking Core Web Vitals, or investigating slow pages.
+---
+
 # Performance Audit Skill
 
 Analyze web page performance using Web Vitals and network timing metrics.

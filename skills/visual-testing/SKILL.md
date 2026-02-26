@@ -1,3 +1,8 @@
+---
+name: visual-testing
+description: Perform visual testing and UI verification using screenshots and DOM inspection. Use when verifying UI appearance, comparing with designs, or checking for visual regressions.
+---
+
 # Visual Testing Skill
 
 Perform visual testing and UI verification using screenshots and DOM inspection.
