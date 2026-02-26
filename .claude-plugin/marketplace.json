@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "browser-devtools-mcp",
-      "source": ".",
+      "source": "./",
       "description": "Playwright browser automation, Node.js backend debugging, and testing tools",
       "version": "0.2.5",
       "author": {
